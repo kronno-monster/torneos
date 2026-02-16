@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
 app.use('/api/jugadores', jugadoresRoutes);
 app.use('/api/torneos', torneosRoutes);
 app.use('/api/partidas', partidasRoutes);
+app.use('/setup', setupRoutes);
 
 // Errores
 app.use(notFound);
