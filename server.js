@@ -5,7 +5,6 @@ require('dotenv').config();
 const { testConnection } = require('./config/db');
 const { errorHandler, notFound } = require('./middlewares/errorHandler');
 
-// Importar rutas
 const jugadoresRoutes = require('./routes/jugadores.routes');
 const torneosRoutes = require('./routes/torneos.routes');
 const partidasRoutes = require('./routes/partidas.routes');
@@ -32,12 +31,12 @@ app.get('/', (req, res) => {
   });
 });
 
-// Rutas de la API
+// Rutas
 app.use('/api/jugadores', jugadoresRoutes);
 app.use('/api/torneos', torneosRoutes);
 app.use('/api/partidas', partidasRoutes);
 
-// Middlewares de error
+// Errores
 app.use(notFound);
 app.use(errorHandler);
 
@@ -46,12 +45,10 @@ const iniciarServidor = async () => {
   try {
     await testConnection();
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-      console.log(`📚 Documentación: http://localhost:${PORT}/`);
+      console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
     });
   } catch (error) {
-    console.error('Error al iniciar el servidor:', error);
-    process.exit(1);
+    console.error('❌ Error al iniciar el servidor:', error.message);
   }
 };
 
