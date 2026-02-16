@@ -1,0 +1,325 @@
+{
+  "info": {
+    "name": "API Torneos de Videojuegos",
+    "description": "Colección completa de endpoints para la API de torneos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Jugadores",
+      "item": [
+        {
+          "name": "Obtener todos los jugadores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores?estado=activo&orden=desc&limite=50",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores"],
+              "query": [
+                {"key": "estado", "value": "activo"},
+                {"key": "orden", "value": "desc"},
+                {"key": "limite", "value": "50"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener jugador por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener ranking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/ranking?limite=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "ranking"],
+              "query": [{"key": "limite", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Obtener estadísticas de jugador",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/1/estadisticas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "1", "estadisticas"]
+            }
+          }
+        },
+        {
+          "name": "Obtener torneos de jugador",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/1/torneos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "1", "torneos"]
+            }
+          }
+        },
+        {
+          "name": "Crear jugador",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"NuevoJugador\",\n  \"email\": \"nuevo@email.com\",\n  \"nombre_completo\": \"Nombre Completo\",\n  \"pais\": \"México\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/jugadores",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar jugador",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_completo\": \"Nombre Actualizado\",\n  \"pais\": \"España\",\n  \"estado\": \"activo\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar jugador",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/jugadores/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "jugadores", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Torneos",
+      "item": [
+        {
+          "name": "Obtener todos los torneos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/torneos?estado=en_curso&juego=Valorant",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos"],
+              "query": [
+                {"key": "estado", "value": "en_curso"},
+                {"key": "juego", "value": "Valorant"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener torneo por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener jugadores inscritos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1/jugadores",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1", "jugadores"]
+            }
+          }
+        },
+        {
+          "name": "Obtener estadísticas del torneo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1/estadisticas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1", "estadisticas"]
+            }
+          }
+        },
+        {
+          "name": "Crear torneo",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Nuevo Torneo 2024\",\n  \"juego\": \"Valorant\",\n  \"descripcion\": \"Torneo de prueba\",\n  \"fecha_inicio\": \"2024-06-01\",\n  \"fecha_fin\": \"2024-06-10\",\n  \"premio_total\": 5000.00,\n  \"max_participantes\": 16\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/torneos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos"]
+            }
+          }
+        },
+        {
+          "name": "Inscribir jugador a torneo",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jugador_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1/inscribir",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1", "inscribir"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar torneo",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Torneo Actualizado\",\n  \"estado\": \"en_curso\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar torneo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/torneos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "torneos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Partidas",
+      "item": [
+        {
+          "name": "Obtener todas las partidas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/partidas?torneo_id=1&estado=finalizada",
+              "host": ["{{base_url}}"],
+              "path": ["api", "partidas"],
+              "query": [
+                {"key": "torneo_id", "value": "1"},
+                {"key": "estado", "value": "finalizada"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener partida por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/partidas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "partidas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear partida",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"torneo_id\": 1,\n  \"jugador1_id\": 1,\n  \"jugador2_id\": 2,\n  \"ronda\": \"Cuartos de Final\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/partidas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "partidas"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar resultado de partida",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"puntos_jugador1\": 16,\n  \"puntos_jugador2\": 12,\n  \"ganador_id\": 1,\n  \"duracion_minutos\": 45,\n  \"estado\": \"finalizada\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/partidas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "partidas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar partida",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/partidas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "partidas", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
