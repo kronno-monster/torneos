@@ -8,6 +8,7 @@ const { errorHandler, notFound } = require('./middlewares/errorHandler');
 const jugadoresRoutes = require('./routes/jugadores.routes');
 const torneosRoutes = require('./routes/torneos.routes');
 const partidasRoutes = require('./routes/partidas.routes');
+const setupRoutes = require('./routes/setup.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

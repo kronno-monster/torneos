@@ -1,30 +1,28 @@
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 require('dotenv').config();
 
-// Crear pool de conexiones para mejor rendimiento
-const pool = mysql.createPool({
+// Crear pool de conexiones para PostgreSQL
+const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  port: process.env.DB_PORT || 5432,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  connectionTimeoutMillis: 60000,
+  max: 10
 });
-
-// Convertir a promesas para usar async/await
-const promisePool = pool.promise();
 
 // Verificar conexión
 const testConnection = async () => {
   try {
-    const connection = await promisePool.getConnection();
-    console.log('✅ Conexión exitosa a MySQL');
-    connection.release();
+    const client = await pool.connect();
+    console.log('✅ Conexión exitosa a PostgreSQL');
+    client.release();
   } catch (error) {
-    console.error('❌ Error al conectar a MySQL:', error.message);
+    console.error('❌ Error al conectar a PostgreSQL:', error.message);
+    process.exit(1);
   }
 };
 
-module.exports = { pool: promisePool, testConnection };
+module.exports = { pool, testConnection };
